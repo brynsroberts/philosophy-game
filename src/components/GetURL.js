@@ -33,9 +33,6 @@ function GetURL(props) {
         <Form onSubmit={handleClick} className="myForm form-inline">
             <Form.Row className="align-items-center">
                 <Col xs="auto">
-                    <Form.Label htmlFor="inlineFormInput" srOnly>
-                        Enter Wikipedia Article URL
-                    </Form.Label>
                     <Form.Control
                         className="mb-2"
                         id="inlineFormInput"
@@ -45,7 +42,7 @@ function GetURL(props) {
                     />
                 </Col>
                 <Col xs="auto">
-                    <Button type="submit" className="mb-2">
+                    <Button type="submit" className="mb-2 btn-block">
                         Submit
                     </Button>
                 </Col>

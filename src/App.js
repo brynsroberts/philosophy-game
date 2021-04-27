@@ -10,12 +10,16 @@ function App() {
 
   const [articles, setArticles] = useState([]);
 
+  const remove_last_article = () => {
+    setArticles(articles.slice(0,articles.length - 1))
+  }
+
   return (
     <Router>
       <div className="App">
         <Nav setArticles={setArticles} articles={articles} />
         <Switch>
-          <Route path="/" exact render={() => <Game setArticles={setArticles} articles={articles} />} />
+          <Route path="/" exact render={() => <Game setArticles={setArticles} articles={articles} remove_last_article={remove_last_article} />} />
           <Route path="/tutorial" component={Tutorial} />
         </Switch>
 

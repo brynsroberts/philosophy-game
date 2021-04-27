@@ -28,8 +28,8 @@ function Game(props) {
         <div>
             {articlesLength() === 0 && <Title />}
             {articlesLength() === 0 && <GetURL setArticles={props.setArticles} />}
-            {articlesLength() > 0 && game_over() && <GameOver length={articlesLength()} setArticles={props.setArticles} />}
-            {articlesLength() > 0 && !game_over() && <PickArticle setArticles={props.setArticles} title={getTitle()} links={getLinks()} />}
+            {articlesLength() > 0 && game_over() && <GameOver length={articlesLength} setArticles={props.setArticles} />}
+            {articlesLength() > 0 && !game_over() && <PickArticle setArticles={props.setArticles} title={getTitle} links={getLinks} remove_last_article={props.remove_last_article} />}
             {articlesLength() > 0 && <DisplayArticles articles={props.articles} />}
         </div>
     );
