@@ -25,14 +25,14 @@ function GetURL(props) {
     const handleClick = (event) => {
         event.preventDefault();
         props.setArticles(prevState => {
-            return [...prevState, { ...article, self: input }];
+            return [...prevState, { ...article }];
         })
     };
 
     return (
         <Form onSubmit={handleClick} className="myForm form-inline">
             <Form.Row className="align-items-center">
-                <Col xs="auto">
+                <Col xs="auto" sm="12" md="auto">
                     <Form.Control
                         className="mb-2"
                         id="inlineFormInput"
@@ -41,14 +41,13 @@ function GetURL(props) {
                         onChange={handleChange}
                     />
                 </Col>
-                <Col xs="auto">
-                    <Button type="submit" className="mb-2 btn-block">
+                <Col sm="12" md="auto">
+                    <Button type="submit" className="mb-2 center-block">
                         Submit
                     </Button>
                 </Col>
             </Form.Row>
         </Form>
-
     );
 }
 
