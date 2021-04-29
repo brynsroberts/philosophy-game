@@ -1,10 +1,10 @@
-import GetURL from "./GetURL";
-import PickArticle from "./PickArticle";
-import DisplayArticles from "./DisplayArticles";
-import GameOver from "./GameOver";
-import Title from "./Title";
+import GetURL from "./components/GetURL";
+import PickArticle from "./components/PickArticle";
+import DisplayArticles from "./components/DisplayArticles";
+import GameOver from "./components/GameOver";
+import Title from "./components/Title";
 
-function Game(props) {
+function Home(props) {
 
     const philosophy_url = 'https://en.wikipedia.org/wiki/Philosophy';
 
@@ -35,4 +35,4 @@ function Game(props) {
     );
 };
 
-export default Game;
+export default Home;
