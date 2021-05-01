@@ -9,7 +9,7 @@ function PickArticle(props) {
     };
 
     return (
-        <Card className="sectionHeader">
+        <Card className="border-0 centerText opacity-50">
             <Card.Header>Current Article</Card.Header>
             <Card.Body>
                 <Card.Title>{props.title()}</Card.Title>
@@ -18,7 +18,7 @@ function PickArticle(props) {
                 </Card.Text>
                 {props.links().map((link, index) => <ArticleLink link={link} key={index} setArticles={props.setArticles} />)}
                 <div>
-                    <Button href="/" variant="outline-danger" onClick={handleClick}>Back</Button>
+                    <Button className="linkButton" href="/" variant="outline-danger" onClick={handleClick}>Back</Button>
                 </div>
             </Card.Body>
         </Card>

@@ -18,10 +18,10 @@
   transform: translate(-50%, -50%);
 }
 
-.sectionHeader {
+.centerText {
   text-align: center;
 }
 
 .linkButton {
-  margin: 0.1em;
+  margin: 0.25em;
 }

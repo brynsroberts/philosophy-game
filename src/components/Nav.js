@@ -24,11 +24,7 @@ function Navigation(props) {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-
         </>
-
-
-
     );
 }
 

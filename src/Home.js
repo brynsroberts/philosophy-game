@@ -3,6 +3,7 @@ import PickArticle from "./components/PickArticle";
 import DisplayArticles from "./components/DisplayArticles";
 import GameOver from "./components/GameOver";
 import Title from "./components/Title";
+import { Container, Row, Col } from 'react-bootstrap';
 
 function Home(props) {
 
@@ -28,9 +29,20 @@ function Home(props) {
         <div>
             {articlesLength() === 0 && <Title />}
             {articlesLength() === 0 && <GetURL setArticles={props.setArticles} />}
-            {articlesLength() > 0 && game_over() && <GameOver length={articlesLength} setArticles={props.setArticles} />}
+            <Container fluid>
+                <Row>
+                    <Col sm="12" md="6">
+                        {articlesLength() > 0 && game_over() && <GameOver length={articlesLength} setArticles={props.setArticles} />}
+                        {articlesLength() > 0 && !game_over() && <PickArticle setArticles={props.setArticles} title={getTitle} links={getLinks} remove_last_article={props.remove_last_article} />}
+                    </Col>
+                    <Col sm="12" md="6">
+                        {articlesLength() > 0 && <DisplayArticles articles={props.articles} />}
+                    </Col>
+                </Row>
+            </Container>
+            {/* {articlesLength() > 0 && game_over() && <GameOver length={articlesLength} setArticles={props.setArticles} />}
             {articlesLength() > 0 && !game_over() && <PickArticle setArticles={props.setArticles} title={getTitle} links={getLinks} remove_last_article={props.remove_last_article} />}
-            {articlesLength() > 0 && <DisplayArticles articles={props.articles} />}
+            {articlesLength() > 0 && <DisplayArticles articles={props.articles} />} */}
         </div>
     );
 };
