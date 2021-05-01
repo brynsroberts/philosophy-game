@@ -1,5 +1,5 @@
 import { Card, Button } from 'react-bootstrap';
-import ArticleLink from "./ArticleLink";
+import ArticleButton from "./ArticleButton";
 
 function PickArticle(props) {
 
@@ -16,7 +16,7 @@ function PickArticle(props) {
                 <Card.Text>
                     Please pick a link to your next article
                 </Card.Text>
-                {props.links().map((link, index) => <ArticleLink link={link} key={index} setArticles={props.setArticles} />)}
+                {props.links().map((link, index) => <ArticleButton link={link} key={index} setArticles={props.setArticles} />)}
                 <div>
                     <Button className="linkButton" href="/" variant="outline-danger" onClick={handleClick}>Back</Button>
                 </div>

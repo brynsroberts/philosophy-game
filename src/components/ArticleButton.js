@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap';
-function ArticleLink(props) {
+function ArticleButton(props) {
 
     const article = {
         first_sentence: "This is the first sample sentence of a sample page",
@@ -38,4 +38,4 @@ function ArticleLink(props) {
     );
 }
 
-export default ArticleLink;
+export default ArticleButton;

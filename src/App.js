@@ -19,7 +19,6 @@ function App() {
       <div className="App">
         <Nav setArticles={setArticles} articles={articles} />
         <Switch>
-          {/* <Route path="/" exact render={() => <Game setArticles={setArticles} articles={articles} remove_last_article={remove_last_article} />} /> */}
           { <Route path="/" exact render={() => <Home setArticles={setArticles} articles={articles} remove_last_article={remove_last_article} />} /> }
           <Route path="/tutorial" component={Tutorial} />
         </Switch>

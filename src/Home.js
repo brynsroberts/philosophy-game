@@ -26,24 +26,20 @@ function Home(props) {
     }
 
     return (
-        <div>
+        <Container fluid>
             {articlesLength() === 0 && <Title />}
             {articlesLength() === 0 && <GetURL setArticles={props.setArticles} />}
-            <Container fluid>
-                <Row>
-                    <Col sm="12" md="6">
-                        {articlesLength() > 0 && game_over() && <GameOver length={articlesLength} setArticles={props.setArticles} />}
-                        {articlesLength() > 0 && !game_over() && <PickArticle setArticles={props.setArticles} title={getTitle} links={getLinks} remove_last_article={props.remove_last_article} />}
-                    </Col>
-                    <Col sm="12" md="6">
-                        {articlesLength() > 0 && <DisplayArticles articles={props.articles} />}
-                    </Col>
-                </Row>
-            </Container>
-            {/* {articlesLength() > 0 && game_over() && <GameOver length={articlesLength} setArticles={props.setArticles} />}
-            {articlesLength() > 0 && !game_over() && <PickArticle setArticles={props.setArticles} title={getTitle} links={getLinks} remove_last_article={props.remove_last_article} />}
-            {articlesLength() > 0 && <DisplayArticles articles={props.articles} />} */}
-        </div>
+            <Row>
+                <Col sm="12" md="6">
+                    {articlesLength() > 0 && game_over() && <GameOver length={articlesLength} setArticles={props.setArticles} />}
+                    {articlesLength() > 0 && !game_over() && <PickArticle setArticles={props.setArticles} title={getTitle} links={getLinks} remove_last_article={props.remove_last_article} />}
+                </Col>
+                <Col sm="12" md="6">
+                    {articlesLength() > 0 && <DisplayArticles articles={props.articles} />}
+                </Col>
+            </Row>
+        </Container>
+
     );
 };
 
