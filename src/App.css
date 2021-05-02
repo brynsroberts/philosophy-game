@@ -2,6 +2,14 @@
   font-family: Georgia, serif;
 }
 
+body {
+  padding-bottom: 70px;
+}
+
+.mainContent {
+  padding-top:2%;
+}
+
 .myForm {
   position: absolute;
   text-align: center;
@@ -24,4 +32,8 @@
 
 .linkButton {
   margin: 0.25em;
+}
+
+h3 {
+  text-decoration: underline;
 }

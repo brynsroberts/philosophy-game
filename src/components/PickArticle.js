@@ -10,7 +10,7 @@ function PickArticle(props) {
 
     return (
         <Card className="border-0 centerText opacity-50">
-            <Card.Header>Current Article</Card.Header>
+            <h3>Current Article</h3>
             <Card.Body>
                 <Card.Title>{props.title()}</Card.Title>
                 <Card.Text>

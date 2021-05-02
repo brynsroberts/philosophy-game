@@ -9,7 +9,7 @@ function GameOver(props) {
 
     return (
         <Card className="border-0 centerText">
-            <Card.Header>Winner!</Card.Header>
+            <h3>Winner!</h3>
             <Card.Body>
                 <Card.Title>It took you {props.length()} articles to find the Philosophy page!</Card.Title>
                 <Card.Text>
