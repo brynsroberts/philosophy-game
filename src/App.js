@@ -19,7 +19,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Nav setArticles={setArticles} articles={articles} />
+        <Nav setArticles={setArticles}/>
         <Switch>
           <Container className="mainContent">
             {<Route path="/" exact render={() => <Home setArticles={setArticles} articles={articles} remove_last_article={remove_last_article} />} />}

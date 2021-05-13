@@ -7,7 +7,7 @@ body {
 }
 
 .mainContent {
-  padding-top:2%;
+  padding-top: 2%;
 }
 
 .myForm {
@@ -36,4 +36,13 @@ body {
 
 h3 {
   text-decoration: underline;
+}
+
+a.custom-card,
+a.custom-card:hover {
+  color: inherit;
+}
+
+.tutorial-text {
+  color: red;
 }
