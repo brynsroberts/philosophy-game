@@ -1,7 +1,9 @@
 const express = require("express");
 const path = require("path");
+const microservice = require("./routes/microservice");
 
 const app = express();
+app.use("/", microservice);
 app.use(express.static(path.join(__dirname, ".//build")));
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "./build/index.html"));
