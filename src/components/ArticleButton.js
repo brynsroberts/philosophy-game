@@ -15,7 +15,16 @@ function ArticleButton(props) {
 
   const getTitle = (link) => {
     const split_string = link.split("/");
-    return split_string[split_string.length - 1];
+    let title = split_string[split_string.length - 1].split("_");
+    return title.join(" ");
+  };
+
+  const keepArticle = (title) => {
+    var pattern = new RegExp(/[~`!$%&*+=';,/{}|":<>?]/); //unacceptable chars
+    if (pattern.test(title)) {
+      return false;
+    }
+    return true; //good user input
   };
 
   const handleClick = async (event) => {
@@ -31,9 +40,6 @@ function ArticleButton(props) {
     props.setArticles((prevState) => {
       return [...prevState, { ...res.data, self: props.link }];
     });
-    //   props.setArticles(prevState => {
-    //       return [...prevState, { ...article, self: props.link, title: getTitle(props.link) }];
-    //   })
   };
 
   const chooseClass = () => {
@@ -45,16 +51,20 @@ function ArticleButton(props) {
     }
   };
 
-  return (
-    <Button
-      className="linkButton"
-      href={props.link}
-      variant={chooseClass()}
-      onClick={handleClick}
-    >
-      {getTitle(props.link)}
-    </Button>
-  );
+  if (keepArticle(getTitle(props.link))) {
+    return (
+      <Button
+        className="linkButton"
+        href={props.link}
+        variant={chooseClass()}
+        onClick={handleClick}
+      >
+        {getTitle(props.link)}
+      </Button>
+    );
+  } else {
+    return <></>;
+  }
 }
 
 export default ArticleButton;

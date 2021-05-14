@@ -13,6 +13,18 @@ function ArticleSummary(props) {
     }
   };
 
+  const getSentence = (sentences) => {
+    const regex = /[a-zA-Z]/;
+    for (const sen of sentences) {
+      console.log(sen);
+      console.log(regex.test(sen));
+      if (regex.test(sen)) {
+        return sen;
+      }
+    }
+    return "";
+  };
+
   return (
     <a
       href={props.self}
@@ -30,7 +42,7 @@ function ArticleSummary(props) {
           {props.index + 1}: {props.title}
         </Card.Header>
         <Card.Body>
-          <Card.Text>{props.text.length > 0 && props.text[0]}</Card.Text>
+          <Card.Text>{getSentence(props.text)}</Card.Text>
         </Card.Body>
       </Card>
     </a>
