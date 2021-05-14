@@ -39,14 +39,21 @@ const getArticle = async (req, res, next) => {
   decode = JSON.parse(decode);
   for (const key in decode) {
     for (let i = 0; i < decode[key].length; i++) {
-      if (decode[key][i][decode[key][i].length - 1] === '"') {
-        decode[key][i] = decode[key][i].substring(0, decode[key][i].length - 1);
-      }
-      if (decode[key][i][0] === '"') {
-        decode[key][i] = decode[key][i].substring(1);
+      if (typeof decode[key][i] === "string") {
+        if (decode[key][i][decode[key][i].length - 1] === '"') {
+          decode[key][i] = decode[key][i].substring(
+            0,
+            decode[key][i].length - 1
+          );
+        }
+        if (decode[key][i][0] === '"') {
+          decode[key][i] = decode[key][i].substring(1);
+        }
+        decode[key][i] = decode[key][i].replace('"', "");
       }
     }
   }
+
   res.status(200).json(decode);
 };
 

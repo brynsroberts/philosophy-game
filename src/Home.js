@@ -42,11 +42,11 @@ function Home(props) {
             />
           )}
         </Col>
-        {/* <Col sm="12" md="6">
+        <Col sm="12" md="6">
           {articlesLength() > 0 && (
             <DisplayArticles articles={props.articles} />
           )}
-        </Col> */}
+        </Col>
       </Row>
     </Container>
   );

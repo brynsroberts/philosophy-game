@@ -1,4 +1,6 @@
 import { Button } from "react-bootstrap";
+import axios from "axios";
+
 function ArticleButton(props) {
   // const article = {
   //     first_sentence: "This is the first sample sentence of a sample page",
@@ -16,9 +18,19 @@ function ArticleButton(props) {
     return split_string[split_string.length - 1];
   };
 
-  const handleClick = (event) => {
+  const handleClick = async (event) => {
     event.preventDefault();
     console.log(props.link);
+    const title = getTitle(props.link);
+    const res = await axios.get("/article", {
+      params: {
+        input: title,
+      },
+    });
+
+    props.setArticles((prevState) => {
+      return [...prevState, { ...res.data, self: props.link }];
+    });
     //   props.setArticles(prevState => {
     //       return [...prevState, { ...article, self: props.link, title: getTitle(props.link) }];
     //   })

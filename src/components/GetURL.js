@@ -29,10 +29,26 @@ function GetURL(props) {
         input: input,
       },
     });
-    console.log(res.data);
-    props.setArticles((prevState) => {
-      return [...prevState, { ...res.data }];
-    });
+    console.log(res.data["article_links"][0]);
+    console.log(
+      res.data["article_links"][0] !==
+        "https://en.wikipedia.org/wiki/Case_sensitivity"
+    );
+    if (
+      res.data["article_links"][0] !==
+        "https://en.wikipedia.org/wiki/Free_content" &&
+      res.data["article_links"][0] !==
+        "https://en.wikipedia.org/wiki/Case_sensitivity"
+    ) {
+      props.setArticles((prevState) => {
+        return [
+          ...prevState,
+          { ...res.data, self: res.data["article_links"][0] },
+        ];
+      });
+    } else {
+      setInput("");
+    }
   };
 
   return (
