@@ -5,24 +5,31 @@ function ArticleSummary(props) {
   const [border, setBorder] = useState("light");
 
   const onHover = () => {
-    const curr = props.title.toLowerCase();
-    if (curr.includes("philosophy")) {
-      return "success";
-    } else {
-      return "primary";
+    if (props.title) {
+      const curr = props.title.toLowerCase();
+      if (curr.includes("philosophy")) {
+        return "success";
+      } else {
+        return "primary";
+      }
     }
+    return "primary";
   };
 
   const getSentence = (sentences) => {
     const regex = /[a-zA-Z]/;
     for (const sen of sentences) {
-      console.log(sen);
-      console.log(regex.test(sen));
       if (regex.test(sen)) {
         return sen;
       }
     }
     return "";
+  };
+
+  const getTitle = (link) => {
+    const split_string = link.split("/");
+    let title = split_string[split_string.length - 1].split("_");
+    return title.join(" ");
   };
 
   return (
@@ -39,7 +46,7 @@ function ArticleSummary(props) {
         onMouseLeave={() => setBorder("light")}
       >
         <Card.Header>
-          {props.index + 1}: {props.title}
+          {props.index + 1}: {getTitle(props.self)}
         </Card.Header>
         <Card.Body>
           <Card.Text>{getSentence(props.text)}</Card.Text>

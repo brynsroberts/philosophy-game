@@ -2,17 +2,6 @@ import { Button } from "react-bootstrap";
 import axios from "axios";
 
 function ArticleButton(props) {
-  // const article = {
-  //     first_sentence: "This is the first sample sentence of a sample page",
-  //     links: [
-  //         'https://en.wikipedia.org/wiki/Nema_Halt_railway_station',
-  //         'https://en.wikipedia.org/wiki/National_Highway_22_(India)',
-  //         'https://en.wikipedia.org/wiki/India',
-  //         'https://en.wikipedia.org/wiki/Buddhist_philosophy',
-  //         'https://en.wikipedia.org/wiki/Philosophy'
-  //     ]
-  // }
-
   const getTitle = (link) => {
     const split_string = link.split("/");
     let title = split_string[split_string.length - 1].split("_");
@@ -29,6 +18,7 @@ function ArticleButton(props) {
 
   const handleClick = async (event) => {
     event.preventDefault();
+    props.setLoading(true);
     console.log(props.link);
     const title = getTitle(props.link);
     const res = await axios.get("/article", {
@@ -40,6 +30,7 @@ function ArticleButton(props) {
     props.setArticles((prevState) => {
       return [...prevState, { ...res.data, self: props.link }];
     });
+    props.setLoading(false);
   };
 
   const chooseClass = () => {
@@ -58,6 +49,7 @@ function ArticleButton(props) {
         href={props.link}
         variant={chooseClass()}
         onClick={handleClick}
+        disabled={props.loading}
       >
         {getTitle(props.link)}
       </Button>

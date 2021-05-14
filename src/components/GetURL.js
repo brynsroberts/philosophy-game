@@ -1,4 +1,4 @@
-import { Form, Col, Button } from "react-bootstrap";
+import { Form, Col, Button, Spinner } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
 
@@ -17,6 +17,7 @@ import axios from "axios";
 
 function GetURL(props) {
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
     setInput(event.currentTarget.value);
@@ -24,6 +25,7 @@ function GetURL(props) {
 
   const handleClick = async (event) => {
     event.preventDefault();
+    setLoading(true);
     const res = await axios.get("/article", {
       params: {
         input: input,
@@ -49,6 +51,7 @@ function GetURL(props) {
     } else {
       setInput("");
     }
+    setLoading(false);
   };
 
   return (
@@ -64,9 +67,23 @@ function GetURL(props) {
           />
         </Col>
         <Col sm="12" md="auto">
-          <Button type="submit" className="mb-2 center-block">
-            Submit
-          </Button>
+          {!loading && (
+            <Button type="submit" className="mb-2 center-block">
+              Submit
+            </Button>
+          )}
+          {loading && (
+            <Button type="submit" disabled className="mb-2 center-block">
+              <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+              <span className="sr-only">Loading...</span>
+            </Button>
+          )}
         </Col>
       </Form.Row>
     </Form>

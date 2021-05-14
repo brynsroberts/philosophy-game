@@ -1,7 +1,16 @@
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Spinner } from "react-bootstrap";
 import ArticleButton from "./ArticleButton";
+import { useState, useEffect } from "react";
 
 function PickArticle(props) {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [loading]);
   const handleClick = (event) => {
     event.preventDefault();
     props.remove_last_article();
@@ -11,13 +20,23 @@ function PickArticle(props) {
     <Card className="border-0 centerText opacity-50">
       <h3>Current Article</h3>
       <Card.Body>
-        <Card.Title>{props.title()}</Card.Title>
-        <Card.Text>Please pick a link to your next article</Card.Text>
+        <div>
+          {!loading && (
+            <Card.Text>Please pick a link to your next article</Card.Text>
+          )}
+          {loading && (
+            <Spinner animation="border" role="status">
+              <span className="sr-only">Loading...</span>
+            </Spinner>
+          )}
+        </div>
         {props.links().map((link, index) => (
           <ArticleButton
             link={link}
             key={index}
             setArticles={props.setArticles}
+            setLoading={setLoading}
+            loading={loading}
           />
         ))}
         <div>
