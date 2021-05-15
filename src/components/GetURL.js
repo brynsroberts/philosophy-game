@@ -2,22 +2,10 @@ import { Form, Col, Button, Spinner } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
 
-// const article = {
-//   title: "Nema_Halt_railway_station",
-//   first_sentence: "This is the first sample sentence of a sample page",
-//   self: "https://en.wikipedia.org/wiki/Nema_Halt_railway_station",
-//   links: [
-//     "https://en.wikipedia.org/wiki/Nema_Halt_railway_station",
-//     "https://en.wikipedia.org/wiki/National_Highway_22_(India)",
-//     "https://en.wikipedia.org/wiki/India",
-//     "https://en.wikipedia.org/wiki/Buddhist_philosophy",
-//     "https://en.wikipedia.org/wiki/Philosophy",
-//   ],
-// };
-
 function GetURL(props) {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [formText, setFormText] = useState("search article");
 
   const handleChange = (event) => {
     setInput(event.currentTarget.value);
@@ -43,8 +31,10 @@ function GetURL(props) {
           { ...res.data, self: res.data["article_links"][0] },
         ];
       });
+      setFormText("search article");
     } else {
       setInput("");
+      setFormText("article not found");
     }
     setLoading(false);
   };
@@ -57,7 +47,7 @@ function GetURL(props) {
             <Form.Control
               className="mb-2"
               id="inlineFormInput"
-              placeholder="search article"
+              placeholder={formText}
               value={input}
               onChange={handleChange}
             />
