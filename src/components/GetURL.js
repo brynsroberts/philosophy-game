@@ -31,11 +31,6 @@ function GetURL(props) {
         input: input,
       },
     });
-    console.log(res.data["article_links"][0]);
-    console.log(
-      res.data["article_links"][0] !==
-        "https://en.wikipedia.org/wiki/Case_sensitivity"
-    );
     if (
       res.data["article_links"][0] !==
         "https://en.wikipedia.org/wiki/Free_content" &&
@@ -58,13 +53,15 @@ function GetURL(props) {
     <Form onSubmit={handleClick} className="myForm form-inline">
       <Form.Row className="align-items-center">
         <Col xs="auto" sm="12" md="auto">
-          <Form.Control
-            className="mb-2"
-            id="inlineFormInput"
-            placeholder="Wikipedia Article URL"
-            value={input}
-            onChange={handleChange}
-          />
+          {!loading && (
+            <Form.Control
+              className="mb-2"
+              id="inlineFormInput"
+              placeholder="search article"
+              value={input}
+              onChange={handleChange}
+            />
+          )}
         </Col>
         <Col sm="12" md="auto">
           {!loading && (
@@ -73,16 +70,9 @@ function GetURL(props) {
             </Button>
           )}
           {loading && (
-            <Button type="submit" disabled className="mb-2 center-block">
-              <Spinner
-                as="span"
-                animation="border"
-                size="sm"
-                role="status"
-                aria-hidden="true"
-              />
+            <Spinner animation="border" role="status">
               <span className="sr-only">Loading...</span>
-            </Button>
+            </Spinner>
           )}
         </Col>
       </Form.Row>
