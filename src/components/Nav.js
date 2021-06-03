@@ -17,7 +17,6 @@ function Navigation(props) {
                         <Nav>
                             <Link className="nav-link" to="/">Home</Link>
                             <Link className="nav-link" onClick={clickHandler} to="/">Restart</Link>
-                            <Link className="nav-link" to="/Tutorial">Tutorial</Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

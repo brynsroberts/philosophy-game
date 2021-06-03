@@ -19,11 +19,9 @@ function ArticleButton(props) {
   const handleClick = async (event) => {
     event.preventDefault();
     props.setLoading(true);
-    console.log(props.link);
-    const title = getTitle(props.link);
     const res = await axios.get("/article", {
       params: {
-        input: title,
+        link: props.link,
       },
     });
 

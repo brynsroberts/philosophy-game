@@ -23,7 +23,7 @@ function PickArticle(props) {
 
   return (
     <Card className="border-0 centerText opacity-50">
-      <h3>Current Article</h3>
+      <h3>Current Article: {props.title()}</h3>
       <Card.Body>
         <div>
           {!loading && (

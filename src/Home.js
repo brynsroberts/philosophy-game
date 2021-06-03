@@ -1,8 +1,7 @@
-import GetURL from "./components/GetURL";
+import EntryPage from "./components/EntryPage";
 import PickArticle from "./components/PickArticle";
 import DisplayArticles from "./components/DisplayArticles";
 import GameOver from "./components/GameOver";
-import Title from "./components/Title";
 import { Container, Row, Col } from "react-bootstrap";
 
 function Home(props) {
@@ -26,8 +25,7 @@ function Home(props) {
 
   return (
     <Container fluid>
-      {articlesLength() === 0 && <Title />}
-      {articlesLength() === 0 && <GetURL setArticles={props.setArticles} />}
+      {articlesLength() === 0 && <EntryPage setArticles={props.setArticles} />}
       <Row>
         <Col sm="12" md="6">
           {articlesLength() > 0 && game_over() && (

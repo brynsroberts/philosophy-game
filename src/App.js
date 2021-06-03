@@ -1,7 +1,6 @@
 import { useState } from "react";
 import './App.css';
 import Nav from "./components/Nav";
-import Tutorial from "./Tutorial";
 import Home from "./Home";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -23,7 +22,6 @@ function App() {
         <Switch>
           <Container className="mainContent">
             {<Route path="/" exact render={() => <Home setArticles={setArticles} articles={articles} remove_last_article={remove_last_article} />} />}
-            <Route path="/tutorial" component={Tutorial} />
           </Container>
         </Switch>
         <Footer />

@@ -10,24 +10,13 @@ body {
   padding-top: 2%;
 }
 
-.myForm {
-  position: absolute;
-  text-align: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.title {
-  position: absolute;
-  text-align: center;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .centerText {
   text-align: center;
+}
+
+.home {
+  text-align: center;
+  margin-top: 15%;
 }
 
 .linkButton {
